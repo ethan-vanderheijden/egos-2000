@@ -6,9 +6,9 @@ BOARD       = a7_35t
 QEMU        = qemu-system-riscv32
 
 # GNU toolchain binaries from SiFive
-RISCV_CC    = riscv64-unknown-elf-gcc -march=rv32ima
-OBJDUMP     = riscv64-unknown-elf-objdump
-OBJCOPY     = riscv64-unknown-elf-objcopy
+RISCV_CC    = riscv32-unknown-elf-gcc -march=rv32imad
+OBJDUMP     = riscv32-unknown-elf-objdump
+OBJCOPY     = riscv32-unknown-elf-objcopy
 
 DEBUG       = build/debug
 RELEASE     = build/release
@@ -19,7 +19,7 @@ EGOS_DEPS   = earth/* grass/* library/egos.h library/*/* Makefile
 FILESYS     = 1
 LDFLAGS     = -nostdlib -lc -lgcc
 INCLUDE     = -Ilibrary -Ilibrary/elf -Ilibrary/file -Ilibrary/libc -Ilibrary/syscall
-CFLAGS      = -mabi=ilp32 -Wl,--gc-sections -ffunction-sections -fdata-sections -fdiagnostics-show-option
+CFLAGS      = -mabi=ilp32d -Wl,--gc-sections -ffunction-sections -fdata-sections -fdiagnostics-show-option
 DEBUG_FLAGS = --source --all-headers --demangle --line-numbers --wide
 
 SYSAPP_ELFS = $(patsubst %.c, $(RELEASE)/%.elf, $(notdir $(wildcard apps/system/*.c)))
